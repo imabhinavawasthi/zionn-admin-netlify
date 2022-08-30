@@ -39,12 +39,12 @@ const Tables = (props) => {
                       <div className="row g-4">
                         <div className="col-2">
                           <div className="cell-wide cell purple-b">
-                            <strong>customer name</strong>
+                            <strong>customer</strong>
                           </div>
                         </div>
                         <div className="col-2">
                           <div className="cell-mid cell purple-b">
-                            <strong>current company</strong>
+                            <strong>company</strong>
                           </div>
                         </div>
                         <div className="col-2">
@@ -54,7 +54,7 @@ const Tables = (props) => {
                         </div>
                         <div className="col-2">
                           <div className="cell-mid cell purple-b">
-                            <strong>ownership proof</strong>
+                            <strong>ownership</strong>
                           </div>
                         </div>
                       </div>

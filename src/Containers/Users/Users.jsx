@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import './users.css'
 import { useNavigate } from "react-router";
 
+
 const Users = () => {
   const navigate = useNavigate();
   const user = localStorage.getItem("user");
@@ -17,7 +18,7 @@ const Users = () => {
       navigate("/signin");
     }, 1000)
   }
-  else if (userobj.email === "bhanu@zionn.trade") {   //bhanu@zionn.trade
+  else if (userobj.email === "awasthiabhinav744@gmail.com") {   //bhanu@zionn.trade
     checkadmin = true;
   }
   else {
@@ -45,7 +46,45 @@ const Users = () => {
         <div className='row back-btn'>
           <strong ><NavLink style={{ textDecoration: 'none' }} to="/"><i class="bi bi-arrow-return-left"></i>back</NavLink></strong>
         </div>
-        <div className='row'>
+        <div className='row mt-3'>
+        <div className="heading-cp-css head-font">users</div>
+          <div className="container-sm  main-con">
+            <div className="row g-4">
+              <div className="col-2">
+                <div className="cell-wide cell purple-b">
+                  <strong>customer</strong>
+                </div>
+              </div>
+              <div className="col-2">
+                <div className="cell-mid cell purple-b">
+                  <strong>company</strong>
+                </div>
+              </div>
+              <div className="col-2">
+                <div className="cell-mid cell purple-b">
+                  <strong>inventory</strong>
+                </div>
+              </div>
+              <div className="col-2">
+                <div className="cell-mid cell purple-b">
+                  <strong>ownership</strong>
+                </div>
+              </div>
+            </div>
+            {userdetails.map((detail) => {
+              return (
+                <div>
+                  <Row
+                    a={detail?.user_name}
+                    b={detail?.c_name}
+                    c={detail?.no_of_shares}
+                    d={detail?.doc_url}
+                  />
+                </div>
+              )
+
+            })}
+          </div>
 
         </div>
       </div>
