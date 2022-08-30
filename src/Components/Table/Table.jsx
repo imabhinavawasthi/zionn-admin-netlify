@@ -16,9 +16,9 @@ const Tables = (props) => {
     async function f() {
       let res = await api.userTableData()
 
-      setUserDetails(res.data.result);
+      setUserDetails(res.data.users);
 
-      // console.log(res.data.result);
+      // console.log(res.data.users);
     }
 
     f()
