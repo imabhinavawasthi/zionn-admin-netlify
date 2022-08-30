@@ -26,3 +26,8 @@ export const inventoryTableData = async () => {
 
     return userdata;
 }
+
+export const userSignIn = async (userData) => {
+    let res = await API.post("/auth/login", userData)
+    return res;
+}

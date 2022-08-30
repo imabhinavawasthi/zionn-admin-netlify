@@ -18,7 +18,7 @@ const Tables = (props) => {
 // console.log(res);
       setInventoryDetails(res.data.message);
 
-      console.log(res.data.message);
+      // console.log(res.data.message);
     }
 
     f()
@@ -49,7 +49,7 @@ const Tables = (props) => {
                         </div>
                         <div className="col-3">
                           <div className="cell-mid cell purple-b">
-                            <strong># of unique users</strong>
+                            <strong>#of unique users</strong>
                           </div>
                         </div>
                       </div>

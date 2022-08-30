@@ -5,21 +5,31 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router";
 import monkey from "../../assets/monkey.svg"
 import logo from "../../assets/logo.svg"
-import {Sidebar,SidebarItem} from "../../../node_modules/react-responsive-sidebar/index"
+import { Sidebar, SidebarItem } from "../../../node_modules/react-responsive-sidebar/index"
 import "./admin.css"
 import Tables from "../../Components/Table/Table";
 import InventoryTable from "../../Components/Table/InventoryTable";
 
 
-
 const Admin = () => {
     const navigate = useNavigate();
+    const user = localStorage.getItem("user");
+    let checkadmin=false;
+    const userobj = JSON.parse(localStorage.getItem('user'));
+    if (user === null) {
+        setTimeout(() => {
+            navigate("/signin");
+        }, 1000)
+    }
+    else if (userobj.email === "awasthiabhinav744@gmail.com") {   //bhanu@zionn.trade
+        checkadmin=true;
+    }
     let logOut = (e) => {
         e.preventDefault();
         localStorage.removeItem("user");
-        navigate("/signup");
+        navigate("/signin");
     };
-    
+
     const [openlogout, setOpenlogout] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const handleClick = (e) => {
@@ -52,7 +62,7 @@ const Admin = () => {
     ];
     return (
         <>
-            <div>
+            {checkadmin ? (<div>
                 <Sidebar
                     className="side-bar z-s-i-css"
                     content={items}
@@ -99,13 +109,13 @@ const Admin = () => {
                     <div onClick={() => setOpenlogout(false)} className="container con-abs">
                         <div className="row ">
                             <div className="container mb-5">
-                            <Tables heading1="users"/>
-                            <InventoryTable heading1="inventory"/>
+                                <Tables heading1="users" />
+                                <InventoryTable heading1="inventory" />
                             </div>
                         </div>
                     </div>
                 </Sidebar>
-            </div>
+            </div>) : (<>You are not authorised to access this page<button onClick={logOut}>logout</button></>)}
         </>
     );
 };
