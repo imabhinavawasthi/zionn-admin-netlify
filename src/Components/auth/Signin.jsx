@@ -158,7 +158,7 @@ const Signin = () => {
                                             </div>
                                         </div>
                                         <div className="row mt-3">
-                                            <p className="txt-2">not an admin? <a style={{ textDecoration: "none" }} className="pur-nav-css" href="beta.zionn.trade">visit zionn</a> </p>
+                                            <p className="txt-2">not an admin? <a style={{ textDecoration: "none" }} className="pur-nav-css" href="https://beta.zionn.trade">visit zionn</a> </p>
                                         </div>
                                     </div>
                                 </form>
