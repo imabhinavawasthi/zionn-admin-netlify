@@ -35,7 +35,7 @@ const Signin = () => {
     const signinfun = async (e) => {
         setLoading(true);
         e.preventDefault();
-        if(email!=="awasthiabhinav744@gmail.com"){
+        if(email!=="bhanu@zionn.trade"){
             setError(true);
             setNotAdmin(true)
             setLoading(false);
