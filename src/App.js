@@ -6,6 +6,8 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import Users from "./Containers/Users/Users";
+import Inventory from "./Containers/Inventory/Inventory"
 
 function App() {
   return (
@@ -13,7 +15,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Admin/>} />
-          
+          <Route exact path="/users" element={<Users/>} />
+          <Route exact path="/inventory" element={<Inventory/>} />
         </Routes>
       </BrowserRouter>
     </div>

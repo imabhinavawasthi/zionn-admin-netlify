@@ -7,6 +7,9 @@ import monkey from "../../assets/monkey.svg"
 import logo from "../../assets/logo.svg"
 import {Sidebar,SidebarItem} from "../../../node_modules/react-responsive-sidebar/index"
 import "./admin.css"
+import Tables from "../../Components/Table/Table";
+import InventoryTable from "../../Components/Table/InventoryTable";
+
 
 
 const Admin = () => {
@@ -38,22 +41,12 @@ const Admin = () => {
         </SidebarItem>,
         <SidebarItem>
             <div className="sidebar-btn mar-top">
-                <NavLink to="/sellbuy" style={{ textDecoration: 'none' }}><Button widthv={120} name="sell/buy" /></NavLink>
-            </div>
-        </SidebarItem>,
-        <SidebarItem>
-            <div className="sidebar-btn mar-mid-top mb-4">
-                <p data-tooltip-location="right" data-tooltip="we are still in beta. apologies for the half cooked experience"><Button widthv={120} name="calculator" /></p>
+                <NavLink to="/users" style={{ textDecoration: 'none' }}><Button widthv={120} name="users" /></NavLink>
             </div>
         </SidebarItem>,
         <SidebarItem>
             <div className="sidebar-btn mar-mid-top mt-3">
-                <NavLink to="/scoops" style={{ textDecoration: 'none' }}><Button widthv={120} name="scoops" /></NavLink>
-            </div>
-        </SidebarItem>,
-        <SidebarItem>
-            <div className="sidebar-btn mar-mid-top">
-                <p data-tooltip-location="right" data-tooltip="we are still in beta. apologies for the half cooked experience"><Button widthv={120} name="learn" /></p>
+                <NavLink to="/inventory" style={{ textDecoration: 'none' }}><Button widthv={120} name="inventory" /></NavLink>
             </div>
         </SidebarItem>,
     ];
@@ -76,7 +69,7 @@ const Admin = () => {
                             <div className="row">
                                 <div className="col-1"></div>
                                 <div className="col-6 til-mob-css">
-                                    <TitleButton name="we are still in beta. apologies for the half cooked experience" />
+                                    <TitleButton name="search customer" />
                                 </div>
                                 <div className="col-2"></div>
                                 <div className="col-2 logo-top">
@@ -105,9 +98,9 @@ const Admin = () => {
 
                     <div onClick={() => setOpenlogout(false)} className="container con-abs">
                         <div className="row ">
-                            <div className="container">
-
-
+                            <div className="container mb-5">
+                            <Tables heading1="users"/>
+                            <InventoryTable heading1="inventory"/>
                             </div>
                         </div>
                     </div>
