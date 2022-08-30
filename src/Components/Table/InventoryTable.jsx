@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./table.css";
-// import * as api from "../axios"
+import * as api from "../../axios"
 import InventoryRow from "../Row/InventoryRow";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -9,23 +9,20 @@ import { NavLink } from "react-router-dom";
 const Tables = (props) => {
 
 
-  const [cname, setCname] = useState(props.cname)
-  const [cdetails, setDetails] = useState([])
-  const [sloading, setSloading] = useState(true);
+  const [inventorydetails,setInventoryDetails] = useState([])
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   async function f() {
-  //     let res = await api.getCompanyData(cname)
+    async function f() {
+      let res = await api.inventoryTableData()
+// console.log(res);
+      setInventoryDetails(res.data.message);
 
-  //     setDetails(res.data.result2);
+      console.log(res.data.message);
+    }
 
-  //     console.log(res.data.result2);
-  //   }
-
-  //   f()
-  //   setSloading(false);
-  // }, [cname]);
+    f()
+  }, []);
   return (
     <div>
       <div className="container mt-5">
@@ -57,19 +54,19 @@ const Tables = (props) => {
                         </div>
                       </div>
                       <InventoryRow
-                        a="#value"
-                        b="#value"
-                        c="#value"
+                        a={inventorydetails[0]?.c_name}
+                        b={inventorydetails[0]?.no_of_shares}
+                        c={inventorydetails[0]?.count}
                       />
                       <InventoryRow
-                        a="#value"
-                        b="#value"
-                        c="#value"
+                        a={inventorydetails[1]?.c_name}
+                        b={inventorydetails[1]?.no_of_shares}
+                        c={inventorydetails[1]?.count}
                       />
                       <InventoryRow
-                        a="#value"
-                        b="#value"
-                        c="#value"
+                        a={inventorydetails[2]?.c_name}
+                        b={inventorydetails[2]?.no_of_shares}
+                        c={inventorydetails[2]?.count}
                       />
                     </div>
                   </div>

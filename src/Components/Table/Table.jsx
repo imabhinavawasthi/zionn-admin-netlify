@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./table.css";
-// import * as api from "../axios"
+import * as api from "../../axios"
 import Row from "../Row/Row";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -9,23 +9,20 @@ import { NavLink } from "react-router-dom";
 const Tables = (props) => {
 
 
-  const [cname, setCname] = useState(props.cname)
-  const [cdetails, setDetails] = useState([])
-  const [sloading, setSloading] = useState(true);
+  const [userdetails, setUserDetails] = useState([])
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   async function f() {
-  //     let res = await api.getCompanyData(cname)
+    async function f() {
+      let res = await api.userTableData()
 
-  //     setDetails(res.data.result2);
+      setUserDetails(res.data.result);
 
-  //     console.log(res.data.result2);
-  //   }
+      // console.log(res.data.result);
+    }
 
-  //   f()
-  //   setSloading(false);
-  // }, [cname]);
+    f()
+  }, []);
   return (
     <div>
       <div className="container mt-5">
@@ -62,28 +59,28 @@ const Tables = (props) => {
                         </div>
                       </div>
                       <Row
-                        a="#value"
-                        b="#value"
-                        c="#value"
-                        d="#value"
+                        a={userdetails[0]?.user_name}
+                        b={userdetails[0]?.c_name}
+                        c={userdetails[0]?.no_of_shares}
+                        d={userdetails[0]?.doc_url}
                       />
                       <Row
-                        a="#value"
-                        b="#value"
-                        c="#value"
-                        d="#value"
+                        a={userdetails[1]?.user_name}
+                        b={userdetails[1]?.c_name}
+                        c={userdetails[1]?.no_of_shares}
+                        d={userdetails[1]?.doc_url}
                       />
                       <Row
-                        a="#value"
-                        b="#value"
-                        c="#value"
-                        d="#value"
+                        a={userdetails[2]?.user_name}
+                        b={userdetails[2]?.c_name}
+                        c={userdetails[2]?.no_of_shares}
+                        d={userdetails[2]?.doc_url}
                       />
                       <Row
-                        a="#value"
-                        b="#value"
-                        c="#value"
-                        d="#value"
+                        a={userdetails[3]?.user_name}
+                        b={userdetails[3]?.c_name}
+                        c={userdetails[3]?.no_of_shares}
+                        d={userdetails[3]?.doc_url}
                       />
                     </div>
                   </div>

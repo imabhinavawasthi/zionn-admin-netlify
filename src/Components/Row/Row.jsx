@@ -16,7 +16,7 @@ const Row = (props) => {
           <div className="cell-mid cell">{props.c||<Skeleton width={80} height={15} />}</div>
         </div>
         <div className="col-2">
-          <div className="cell-mid cell">{props.d||<Skeleton width={80} height={15} />}</div>
+          <div className="cell-mid cell">{props.d?<><a style={{ textDecoration: 'none ', color:'#7b61ff' }} target="__blank" href={props.d}>view <i className="bi bi-arrow-up-right"/></a></>:<Skeleton width={80} height={15} />}</div>
         </div>
       </div>
       
