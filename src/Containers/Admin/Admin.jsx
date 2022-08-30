@@ -21,7 +21,7 @@ const Admin = () => {
             navigate("/signin");
         }, 1000)
     }
-    else if (userobj.email === "awasthiabhinav744@gmail.com") {   //bhanu@zionn.trade
+    else if (userobj.email === "bhanu@zionn.trade") {   //bhanu@zionn.trade
         checkadmin=true;
     }
     let logOut = (e) => {

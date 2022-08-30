@@ -18,7 +18,7 @@ const Signin = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(false);
     const [user, setUser] = useState(false);
-    const [notAdmin,setNotAdmin]=useState(false);
+    const [notAdmin, setNotAdmin] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [loading, setLoading] = useState(false);
     const [errorwep, setErrorwep] = useState(false); //wrong email password
@@ -35,7 +35,7 @@ const Signin = () => {
     const signinfun = async (e) => {
         setLoading(true);
         e.preventDefault();
-        if(email!=="awasthiabhinav744@gmail.com"){
+        if (email !== "bhanu@zionn.trade") {
             setError(true);
             setNotAdmin(true)
             setLoading(false);
@@ -64,7 +64,7 @@ const Signin = () => {
                 setLoading(false);
                 setTimeout(() => {
                     setError(false);
-                setErrorwep(false);
+                    setErrorwep(false);
                 }, 3000);
             }
             else if (res.data.message === "Wrong password or email") {
@@ -73,7 +73,7 @@ const Signin = () => {
                 setLoading(false);
                 setTimeout(() => {
                     setError(false);
-                setErrorwep(false);
+                    setErrorwep(false);
                 }, 3000);
             }
         }
@@ -92,15 +92,15 @@ const Signin = () => {
                         <div className="form-css-su col-md-6 order-1">
                             <div className="container form-si">
                                 {error ? <>
-                                    {errorune&&(<div class="alert alert-warning" role="alert">
+                                    {errorune && (<div class="alert alert-warning" role="alert">
                                         user not exists
-                                        </div>)}
-                                        {errorwep&&(<div class="alert alert-warning" role="alert">
+                                    </div>)}
+                                    {errorwep && (<div class="alert alert-warning" role="alert">
                                         wrong email or password
-                                        </div>)}
-                                        {notAdmin&&(<div class="alert alert-danger" role="alert">
+                                    </div>)}
+                                    {notAdmin && (<div class="alert alert-danger" role="alert">
                                         you are not authorised to access <strong>admin.zionn.trade</strong>
-                                        </div>)}
+                                    </div>)}
                                 </> : <></>}
                                 <form id="form1" onSubmit={signinfun}>
                                     <div className="container">
