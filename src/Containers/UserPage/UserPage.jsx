@@ -8,13 +8,6 @@ import { useNavigate } from "react-router";
 
 
 const UserPage = () => {
-  const curruser = localStorage.getItem("user");
-  const navigate = useNavigate();
-  if (curruser !== null) {
-    setTimeout(() => {
-      navigate("/");
-    }, 500)
-  }
 
   const params = useParams();
   const [userdetails, setUserDetails] = useState([])
