@@ -11,19 +11,10 @@ import { useNavigate } from "react-router";
 const Users = () => {
   const navigate = useNavigate();
   const user = localStorage.getItem("user");
-  let checkadmin = false;
   const userobj = JSON.parse(localStorage.getItem('user'));
   if (user === null) {
     setTimeout(() => {
       navigate("/signin");
-    }, 1000)
-  }
-  else if (userobj.email == "bhanu@zionn.trade") {   //bhanu@zionn.trade
-    checkadmin = true;
-  } 
-  else {
-    setTimeout(() => {
-      navigate("/");
     }, 1000)
   }
   const [userdetails, setUserDetails] = useState([])
@@ -41,13 +32,13 @@ const Users = () => {
     f()
   }, []);
   return (
-    <div>{checkadmin && <>
-      <div className='container'>
+    <div>
+      {user && (<div className='container'>
         <div className='row back-btn'>
           <strong ><NavLink style={{ textDecoration: 'none' }} to="/"><i class="bi bi-arrow-return-left"></i>back</NavLink></strong>
         </div>
         <div className='row mt-3'>
-        <div className="heading-cp-css head-font">users</div>
+          <div className="heading-cp-css head-font">users</div>
           <div className="container-sm  main-con">
             <div className="row g-4">
               <div className="col-4">
@@ -76,8 +67,8 @@ const Users = () => {
           </div>
 
         </div>
-      </div>
-    </>}</div>
+      </div>)}
+    </div>
   )
 }
 

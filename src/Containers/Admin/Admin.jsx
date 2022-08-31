@@ -14,15 +14,11 @@ import InventoryTable from "../../Components/Table/InventoryTable";
 const Admin = () => {
     const navigate = useNavigate();
     const user = localStorage.getItem("user");
-    let checkadmin=false;
     const userobj = JSON.parse(localStorage.getItem('user'));
     if (user === null) {
         setTimeout(() => {
             navigate("/signin");
         }, 1000)
-    }
-    else if (userobj.email == "bhanu@zionn.trade") {   //bhanu@zionn.trade 
-        checkadmin=true;
     }
     let logOut = (e) => {
         e.preventDefault();
@@ -62,7 +58,7 @@ const Admin = () => {
     ];
     return (
         <>
-            {checkadmin ? (<div>
+            {user && (<div>
                 <Sidebar
                     className="side-bar z-s-i-css"
                     content={items}
@@ -115,9 +111,10 @@ const Admin = () => {
                         </div>
                     </div>
                 </Sidebar>
-            </div>) : (<>You are not authorised to access this page<button onClick={logOut}>logout</button></>)}
+            </div>)}
+            {/* (<>You are not authorised to access this page<button onClick={logOut}>logout</button></>)} */}
         </>
     );
 };
- 
+
 export default Admin;

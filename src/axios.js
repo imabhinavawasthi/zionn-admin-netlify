@@ -3,7 +3,6 @@ import axios from 'axios'
 const API = axios.create({
     baseURL: 'https://zionn-stage.herokuapp.com/'
     // baseURL: 'http://localhost:8080/'
-
 })
 
 API.interceptors.request.use((req) => {
@@ -38,5 +37,10 @@ export const userSignIn = async (userData) => {
 
 export const userPageDetails = async (adminEmail, userUid) => {
     let res = await API.post(`/admin/users?c_id=${userUid}`, adminEmail)
+    return res;
+}
+
+export const isAuth = async (email) => {
+    let res = await API.post("/admin/check", email)
     return res;
 }

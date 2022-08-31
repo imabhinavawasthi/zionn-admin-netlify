@@ -27,7 +27,7 @@ const Signin = () => {
         e.preventDefault();
         setIsActive((current) => !current);
     };
-    const defaultClick = (e) => { 
+    const defaultClick = (e) => {
         e.preventDefault();
         setIsActive(false);
     };
@@ -35,16 +35,16 @@ const Signin = () => {
     const signinfun = async (e) => {
         setLoading(true);
         e.preventDefault();
-        if (email != "bhanu@zionn.trade") {
-            setError(true);
-            setNotAdmin(true)
-            setLoading(false);
-            setTimeout(() => {
-                setError(false)
-                setNotAdmin(false)
-            }, 3000);
-            return;
-        } 
+        // if (email != "bhanu@zionn.trade") {
+        //     setError(true);
+        //     setNotAdmin(true)
+        //     setLoading(false);
+        //     setTimeout(() => {
+        //         setError(false)
+        //         setNotAdmin(false)
+        //     }, 3000);
+        //     return;
+        // } 
         let res = await api.userSignIn({ email, password });
         console.log(res);
         if (res.data.message === "User logged up") {
@@ -52,9 +52,22 @@ const Signin = () => {
                 "user",
                 JSON.stringify({ email: email, token: res.data.token })
             );
-            setTimeout(() => {
-                navigate("/");
-            }, 500);
+            let res2 = await api.isAuth({ email });
+            if (res2.data.message == "Unauthorized") {
+                setError(true);
+                setNotAdmin(true);
+                setLoading(false);
+                localStorage.removeItem("user");
+                setTimeout(() => {
+                    setNotAdmin(false);
+                    setError(false);
+                }, 3000);
+                return;
+            }
+            console.log(res2);
+            // setTimeout(() => {
+            //     navigate("/");
+            // }, 500);
             setLoading(false);
         } else {
             console.log(res.data.message);
