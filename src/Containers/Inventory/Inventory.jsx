@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import * as api from "../../axios"
 import InventoryRow from "../../Components/Row/InventoryRow";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"; 
 
 const Inventory = () => {
   const navigate = useNavigate();

@@ -9,6 +9,7 @@ import {
 import Users from "./Containers/Users/Users";
 import Inventory from "./Containers/Inventory/Inventory"
 import Signin from "./Components/auth/Signin";
+import UserPage from "./Containers/UserPage/UserPage";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Route exact path="/users" element={<Users />} />
           <Route exact path="/inventory" element={<Inventory />} />
           <Route exact path="/signin" element={<Signin />} />
+          <Route exact path="/users/user/:uid" element={<UserPage />} />
+          <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>
     </div>

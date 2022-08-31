@@ -27,7 +27,7 @@ const Signin = () => {
         e.preventDefault();
         setIsActive((current) => !current);
     };
-    const defaultClick = (e) => {
+    const defaultClick = (e) => { 
         e.preventDefault();
         setIsActive(false);
     };

@@ -20,7 +20,7 @@ const Users = () => {
   }
   else if (userobj.email === "bhanu@zionn.trade") {   //bhanu@zionn.trade
     checkadmin = true;
-  }
+  } 
   else {
     setTimeout(() => {
       navigate("/");
@@ -50,24 +50,14 @@ const Users = () => {
         <div className="heading-cp-css head-font">users</div>
           <div className="container-sm  main-con">
             <div className="row g-4">
-              <div className="col-2">
+              <div className="col-4">
                 <div className="cell-wide cell purple-b">
                   <strong>customer</strong>
                 </div>
               </div>
-              <div className="col-2">
+              <div className="col-5">
                 <div className="cell-mid cell purple-b">
-                  <strong>company</strong>
-                </div>
-              </div>
-              <div className="col-2">
-                <div className="cell-mid cell purple-b">
-                  <strong>inventory</strong>
-                </div>
-              </div>
-              <div className="col-2">
-                <div className="cell-mid cell purple-b">
-                  <strong>ownership</strong>
+                  <strong>email</strong>
                 </div>
               </div>
             </div>
@@ -76,9 +66,8 @@ const Users = () => {
                 <div>
                   <Row
                     a={detail?.user_name}
-                    b={detail?.c_name}
-                    c={detail?.no_of_shares}
-                    d={detail?.doc_url}
+                    b={detail?.email}
+                    c={detail?.u_id}
                   />
                 </div>
               )

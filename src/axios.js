@@ -7,6 +7,10 @@ const API = axios.create({
 })
 
 API.interceptors.request.use((req) => {
+    if (localStorage.getItem('user')) {
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('user')).token}`
+    }
+
     return req
 })
 
@@ -29,5 +33,10 @@ export const inventoryTableData = async () => {
 
 export const userSignIn = async (userData) => {
     let res = await API.post("/auth/login", userData)
+    return res;
+}
+
+export const userPageDetails = async (adminEmail, userUid) => {
+    let res = await API.post(`/admin/users?c_id=${userUid}`, adminEmail)
     return res;
 }

@@ -37,50 +37,36 @@ const Tables = (props) => {
                   <div className="">
                     <div className="container-sm  main-con">
                       <div className="row g-4">
-                        <div className="col-2">
+                        <div className="col-4">
                           <div className="cell-wide cell purple-b">
                             <strong>customer</strong>
                           </div>
                         </div>
-                        <div className="col-2">
+                        <div className="col-5">
                           <div className="cell-mid cell purple-b">
-                            <strong>company</strong>
-                          </div>
-                        </div>
-                        <div className="col-2">
-                          <div className="cell-mid cell purple-b">
-                            <strong>inventory</strong>
-                          </div>
-                        </div>
-                        <div className="col-2">
-                          <div className="cell-mid cell purple-b">
-                            <strong>ownership</strong>
+                            <strong>email</strong>
                           </div>
                         </div>
                       </div>
                       <Row
                         a={userdetails[0]?.user_name}
-                        b={userdetails[0]?.c_name}
-                        c={userdetails[0]?.no_of_shares}
-                        d={userdetails[0]?.doc_url}
+                        b={userdetails[0]?.email}
+                        c={userdetails[0]?.u_id}
                       />
                       <Row
                         a={userdetails[1]?.user_name}
-                        b={userdetails[1]?.c_name}
-                        c={userdetails[1]?.no_of_shares}
-                        d={userdetails[1]?.doc_url}
+                        b={userdetails[1]?.email}
+                        c={userdetails[1]?.u_id}
                       />
                       <Row
                         a={userdetails[2]?.user_name}
-                        b={userdetails[2]?.c_name}
-                        c={userdetails[2]?.no_of_shares}
-                        d={userdetails[2]?.doc_url}
+                        b={userdetails[2]?.email}
+                        c={userdetails[2]?.u_id}
                       />
                       <Row
                         a={userdetails[3]?.user_name}
-                        b={userdetails[3]?.c_name}
-                        c={userdetails[3]?.no_of_shares}
-                        d={userdetails[3]?.doc_url}
+                        b={userdetails[3]?.email}
+                        c={userdetails[3]?.u_id}
                       />
                     </div>
                   </div>
