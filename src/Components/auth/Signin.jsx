@@ -44,7 +44,7 @@ const Signin = () => {
                 setNotAdmin(false)
             }, 3000);
             return;
-        }
+        } 
         let res = await api.userSignIn({ email, password });
         console.log(res);
         if (res.data.message === "User logged up") {
