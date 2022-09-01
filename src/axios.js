@@ -54,3 +54,8 @@ export const addNewUser = async ({user_name, email, phone, curr_employer, design
     let res = await API.post("/admin/adduser", { user_name, email, phone, curr_employer, designation, tenure })
     return res;
 }
+
+export const addUserInv = async ({user_name, email, phone, curr_employer, designation, tenure }) => {
+    let res = await API.post("/admin/adduser", { user_name, email, phone, curr_employer, designation, tenure })
+    return res;
+}

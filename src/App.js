@@ -11,6 +11,7 @@ import Inventory from "./Containers/Inventory/Inventory"
 import Signin from "./Components/auth/Signin";
 import UserPage from "./Containers/UserPage/UserPage";
 import AddUser from "./Containers/UserPage/AddUser";
+import AddInventory from "./Containers/UserPage/AddInventory";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/signin" element={<Signin />} />
           <Route exact path="/users/user/:uid" element={<UserPage />} />
           <Route exact path="/users/addnewuser" element={<AddUser />} />
+          <Route exact path="/users/user/addinventory/:uid/:email" element={<AddInventory />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>

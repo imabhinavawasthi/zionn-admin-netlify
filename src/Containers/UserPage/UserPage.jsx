@@ -59,15 +59,15 @@ const UserPage = () => {
       }, 3000)
       return;
     }
-    let res = await api.updateUserData({ user_name: newname, email:newemail, u_id:newuid, phone:newphone, curr_employer:newcompany, designation:newdesignation, tenure:newtenure });
+    let res = await api.updateUserData({ user_name: newname, email: newemail, u_id: newuid, phone: newphone, curr_employer: newcompany, designation: newdesignation, tenure: newtenure });
     console.log(res);
-    if(res.data.message=="User updated"){
+    if (res.data.message == "User updated") {
       setdonenew(true);
       setTimeout(() => {
         setdonenew(false)
       }, 3000)
     }
-    else{
+    else {
       alert(res.data.message)
     }
     setEditF(false);
@@ -154,13 +154,13 @@ const UserPage = () => {
             <div className="heading-cp-css head-font">onboarding</div>
 
             <div className="container-sm  main-con mb-5">
-            {donenew&&<>
-              <div className="row mb-2 mt-2">
+              {donenew && <>
+                <div className="row mb-2 mt-2">
                   <div class="alert alert-success" role="alert">
                     user details updated successfully!
                   </div>
                 </div>
-            </>}
+              </>}
               <RowOnboarding
                 a="name"
                 b={userdetails[0]?.user_name}
@@ -193,6 +193,9 @@ const UserPage = () => {
 
             <div>
               <div className="heading-cp-css head-font">sell/buy</div>
+              <h5>
+                <NavLink style={{ textDecoration: 'none' }} target="_____blank" to={`/users/user/addinventory/${params.uid}/${userdetails[0]?.email}`}>add inventory<i class="bi bi-plus"></i></NavLink>
+              </h5>
               <div className="container-sm  main-con">
                 <div className="row g-4">
                   <div className="col-4">
