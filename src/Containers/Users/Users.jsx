@@ -25,12 +25,19 @@ const Users = () => {
       let res = await api.userTableData()
 
       setUserDetails(res.data.users);
-
-      console.log(res.data.users);
+      // console.log(res.data.users);
     }
 
     f()
   }, []);
+  const filterusers=async(e)=>{
+    e.preventDefault();
+    let res = await api.userTableData()
+    let arr = res?.data.users.filter((content) => {
+      return content.user_name.toLowerCase().includes((e.target.value).toLowerCase());
+    });
+    setUserDetails(arr);
+  }
   return (
     <div>
       {user && (<div className='container'>
@@ -40,6 +47,13 @@ const Users = () => {
         <div className='row mt-3'>
           <div className="heading-cp-css head-font">users</div>
           <div className="container-sm  main-con">
+            <div className="row">
+              <div className="col">
+                <input type="text" onChange={(e)=>{filterusers(e);}} className='butto mar-left mb-4' placeholder="search user" />
+              </div>
+              <div className="col-3"></div>
+            </div>
+            <h5 className="mb-4"><NavLink style={{ textDecoration: 'none' }} to="/users/addnewuser">add user<i class="bi bi-person-plus-fill"></i></NavLink></h5>
             <div className="row g-4">
               <div className="col-4">
                 <div className="cell-wide cell purple-b">
@@ -67,7 +81,7 @@ const Users = () => {
           </div>
 
         </div>
-        <h5 className=""><NavLink style={{ textDecoration: 'none' }} to="/users/addnewuser">add user<i class="bi bi-person-plus-fill"></i></NavLink></h5>
+
       </div>)}
     </div>
   )

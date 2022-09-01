@@ -27,6 +27,14 @@ const Inventory = () => {
 
     f()
   }, []);
+  const filterusers = async (e) => {
+    e.preventDefault();
+    let res = await api.inventoryTableData()
+    let arr = res?.data.message.filter((content) => {
+      return content.c_name.toLowerCase().includes((e.target.value).toLowerCase());
+    });
+    setInventoryDetails(arr);
+  }
   return (
 
     <>
@@ -37,6 +45,12 @@ const Inventory = () => {
         <div className='row mt-3'>
           <div className="heading-cp-css head-font">inventory</div>
           <div className="container-sm  main-con">
+            <div className="row">
+              <div className="col">
+                <input type="text" onChange={(e) => { filterusers(e); }} className='butto mar-left mb-4' placeholder="search inventory" />
+              </div>
+              <div className="col-3"></div>
+            </div>
             <div className="row g-4">
               <div className="col-3">
                 <div className="cell-wide cell purple-b">
