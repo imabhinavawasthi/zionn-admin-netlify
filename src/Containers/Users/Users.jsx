@@ -67,6 +67,7 @@ const Users = () => {
           </div>
 
         </div>
+        <h5 className=""><NavLink style={{ textDecoration: 'none' }} to="/users/addnewuser">add user<i class="bi bi-person-plus-fill"></i></NavLink></h5>
       </div>)}
     </div>
   )

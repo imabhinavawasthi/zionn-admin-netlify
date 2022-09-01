@@ -45,7 +45,12 @@ export const isAuth = async (email) => {
     return res;
 }
 
-export const updateUserData = async ({user_name ,email,u_id, phone,curr_employer,designation,tenure}) => {
-    let res = await API.post("/admin/updateuser", {user_name ,email,u_id, phone,curr_employer,designation,tenure})
+export const updateUserData = async ({ user_name, email, u_id, phone, curr_employer, designation, tenure }) => {
+    let res = await API.post("/admin/updateuser", { user_name, email, u_id, phone, curr_employer, designation, tenure })
+    return res;
+}
+
+export const addNewUser = async ({user_name, email, phone, curr_employer, designation, tenure }) => {
+    let res = await API.post("/admin/adduser", { user_name, email, phone, curr_employer, designation, tenure })
     return res;
 }
