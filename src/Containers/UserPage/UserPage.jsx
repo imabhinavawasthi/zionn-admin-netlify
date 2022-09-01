@@ -52,7 +52,7 @@ const UserPage = () => {
   const [donenew, setdonenew] = useState(false);
   const saveNewDetails = async (e) => {
     e.preventDefault();
-    if (newname == "" || newcompany == "" || newdesignation == "" || newphone == "" || newtenure == "") {
+    if (!newname || !newcompany || !newdesignation || !newphone || !newtenure) {
       seterrornew(true);
       setTimeout(() => {
         seterrornew(false)
