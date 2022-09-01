@@ -36,6 +36,7 @@ const UserPage = () => {
         return;
       }
       setUserDetails(res.data.result);
+      console.log(res);
       setNewname(res.data.result[0].user_name);
       setNewcompany(res.data.result[0].c_name)
       setNewdesignation(res.data.result[0].designation)

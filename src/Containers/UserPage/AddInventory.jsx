@@ -33,18 +33,20 @@ const AddInventory = () => {
         e.preventDefault();
         setIsActive(false);
     };
-    const addUserInv = async(e) => {
+    const addUserInv = async (e) => {
         setLoading(true);
-        let data = JSON.parse(localStorage.getItem("user"));
-
-        let email = data.email
+console.log("submit");
         const formData = new FormData();
-        formData.append("file", doc.selectedFile);
+        if (doc != null)
+            formData.append("file", doc.selectedFile);
+        else
+            formData.append("file", doc);
         formData.append("c_name", c_name);
         formData.append("secu_type", secu_type);
-        formData.append("email", email);
+        formData.append("email", params.email);
         formData.append("no_of_shares", no_of_shares);
         let res = await api.addUserInv(formData)
+        console.log(res.data.message);
         setLoading(false);
         navigate(`/users/user/${params.uid}`);
 
@@ -64,9 +66,9 @@ const AddInventory = () => {
     return (
         <>
             {curruser && (<div>
-                <h1 className="mb-5 mt-3 head-user-page-css">
+                <h3 className="mb-5 mt-3 head-user-page-css">
                     Add Inventory for User: {params.email} <p><NavLink to={`/users/user/${params.uid}`} style={{ textDecoration: 'none' }} ><h5 style={{ color: '#000' }}><i class="bi bi-x-circle-fill"></i> cancel</h5></NavLink></p>
-                </h1>
+                </h3>
                 <div className="container mb-5">
                     <form
                         id="form1"
@@ -161,7 +163,7 @@ const AddInventory = () => {
                                                     name="file"
                                                     accept="application/pdf,application/msword,
   application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                                    required
+                                                    
                                                 />
                                                 {issub ? <>uploaded  <i class="bi bi-check"></i></> : <>upload <i class="bi bi-arrow-up-right"></i></>}
                                             </label>
