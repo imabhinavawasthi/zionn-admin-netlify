@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
+  Navigate, 
 } from "react-router-dom";
 import Users from "./Containers/Users/Users";
 import Inventory from "./Containers/Inventory/Inventory"
