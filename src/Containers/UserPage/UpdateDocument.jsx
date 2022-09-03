@@ -34,7 +34,7 @@ const UpdateDocument = () => {
         formData.append("date", params.date);
         formData.append("uid", params.uid)
         let res = await api.updateDoc(formData)
-        console.log(res);
+        // console.log(res.data.message);
         
         navigate(`/users/user/${params.uid}`);
         setLoading(false);

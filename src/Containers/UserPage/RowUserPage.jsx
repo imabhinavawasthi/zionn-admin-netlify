@@ -10,7 +10,6 @@ const RowUserPage = (props) => {
   var date = new Date(parseInt(props.e));
   var dateToStr = date.toUTCString().split(' ');
   var cleanDate = dateToStr[1] + ' ' + dateToStr[2] + ' ' + dateToStr[3] + ' ' + dateToStr[0] + ' ' + dateToStr[4];
-  console.log(cleanDate);
   var sect="";
   if(props.d=="esop")
   sect="ESOP"
