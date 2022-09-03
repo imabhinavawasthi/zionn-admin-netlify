@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import * as api from "../../axios"
 import InventoryRow from "../../Components/Row/InventoryRow";
 import { NavLink } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 const Inventory = () => {
   const navigate = useNavigate();
@@ -14,11 +15,13 @@ const Inventory = () => {
     }, 1000)
   }
   const [inventorydetails, setInventoryDetails] = useState([])
+  const [sloading,setSloading]=useState(false);
 
   useEffect(() => {
 
     async function f() {
       let res = await api.inventoryTableData()
+      setSloading(true);
       // console.log(res);
       setInventoryDetails(res.data.message);
 
@@ -68,7 +71,7 @@ const Inventory = () => {
                 </div>
               </div>
             </div>
-            {inventorydetails.map((detail) => {
+            {sloading?<>{inventorydetails.map((detail) => {
               return (
                 <div>
                   <InventoryRow
@@ -80,8 +83,35 @@ const Inventory = () => {
               )
 
             })}
-          </div>
+          </>:<>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
 
+
+            </>}
+            </div>
         </div>
       </div>}
     </>

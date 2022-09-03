@@ -18,17 +18,18 @@ const Users = () => {
     }, 1000)
   }
   const [userdetails, setUserDetails] = useState([])
-
+  const [sloading,setSloading]=useState(false);
   useEffect(() => {
 
     async function f() {
       let res = await api.userTableData()
-
+      setSloading(true);
       setUserDetails(res.data.users);
       // console.log(res.data.users);
     }
 
     f()
+
   }, []);
   const filterusers=async(e)=>{
     e.preventDefault();
@@ -66,7 +67,8 @@ const Users = () => {
                 </div>
               </div>
             </div>
-            {userdetails.map((detail) => {
+            {sloading?<>
+              {userdetails.map((detail) => {
               return (
                 <div>
                   <Row
@@ -77,7 +79,34 @@ const Users = () => {
                 </div>
               )
 
-            })}
+            })}</>:<>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+            <Skeleton width="80%"/>
+
+
+            </>}
           </div>
 
         </div>
