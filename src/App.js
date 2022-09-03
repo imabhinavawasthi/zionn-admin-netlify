@@ -12,6 +12,7 @@ import Signin from "./Components/auth/Signin";
 import UserPage from "./Containers/UserPage/UserPage";
 import AddUser from "./Containers/UserPage/AddUser";
 import AddInventory from "./Containers/UserPage/AddInventory";
+import UpdateDocument from "./Containers/UserPage/UpdateDocument";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/users/user/:uid" element={<UserPage />} />
           <Route exact path="/users/addnewuser" element={<AddUser />} />
           <Route exact path="/users/user/addinventory/:uid/:email" element={<AddInventory />} />
+          <Route exact path="/users/user/updatedoc/:uid/:date/:cname" element={<UpdateDocument/>} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>

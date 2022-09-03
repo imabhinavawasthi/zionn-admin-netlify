@@ -59,3 +59,8 @@ export const addUserInv = async (sharedata) => {
     let res = await API.post("/admin/addadminInv", sharedata)
     return res;
 }
+
+export const updateDoc = async (sharedata) => {
+    let res = await API.post("/admin/updatedoc", sharedata)
+    return res;
+}

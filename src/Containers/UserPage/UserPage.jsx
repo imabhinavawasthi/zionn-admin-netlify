@@ -221,21 +221,22 @@ const UserPage = () => {
                   </div>
                   <div className="col-2">
           <div className="row">
-            <div className="col-8"><div className="cell-mid cell purple-b">ownership</div></div>
-            <div className="col-4"><div className="cell-mid cell purple-b "><i class="pen-bi-c bi bi-pen"></i></div></div>
+            <div className="col-8"><div className="cell-mid cell purple-b"><strong>ownership</strong></div></div>
+            <div className="col-4"><div className="cell-mid cell purple-b "><strong><i class="pen-bi-c bi bi-pen"></i></strong></div></div>
           </div>
         </div>
                 </div>
                 {userdetails.map((detail) => {
                   return (
                     <div>
-                      <RowUserPage
+                      <RowUserPage 
+                        key={detail?.date}
                         a={detail?.c_name}
                         b={detail?.no_of_shares}
                         c={detail?.doc_url}
                         d={detail?.secu_type}
                         e={detail?.date}
-                        f={detail?.email}
+                        f={params.uid}
                       />
 
                     </div>

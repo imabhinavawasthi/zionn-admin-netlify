@@ -185,3 +185,8 @@ input[type="number"] {
 .pen-bi-c{
   color: #ffffff;
 }
+
+.input-update-doc{
+  display: none;
+  cursor: pointer;
+}
