@@ -37,17 +37,22 @@ const Tables = (props) => {
                   <div className="">
                     <div className="container-sm  main-con">
                       <div className="row g-4">
-                        <div className="col-3">
+                        <div className="col-2">
                           <div className="cell-wide cell purple-b">
                             <strong>company</strong>
                           </div>
                         </div>
-                        <div className="col-3">
+                        <div className="col-2">
                           <div className="cell-mid cell purple-b">
                             <strong># of securities</strong>
                           </div>
                         </div>
-                        <div className="col-3">
+                        <div className="col-2">
+                          <div className="cell-mid cell purple-b">
+                            <strong>type</strong>
+                          </div>
+                        </div>
+                        <div className="col-2">
                           <div className="cell-mid cell purple-b">
                             <strong>#of unique users</strong>
                           </div>
@@ -56,17 +61,20 @@ const Tables = (props) => {
                       <InventoryRow
                         a={inventorydetails[0]?.c_name}
                         b={inventorydetails[0]?.no_of_shares}
-                        c={inventorydetails[0]?.count}
+                        c={inventorydetails[0]?.secu_type}
+                        d={inventorydetails[0]?.count}
                       />
                       <InventoryRow
                         a={inventorydetails[1]?.c_name}
                         b={inventorydetails[1]?.no_of_shares}
-                        c={inventorydetails[1]?.count}
+                        c={inventorydetails[1]?.secu_type}
+                        d={inventorydetails[0]?.count}
                       />
                       <InventoryRow
                         a={inventorydetails[2]?.c_name}
                         b={inventorydetails[2]?.no_of_shares}
-                        c={inventorydetails[2]?.count}
+                        c={inventorydetails[2]?.secu_type}
+                        d={inventorydetails[0]?.count}
                       />
                     </div>
                   </div>
