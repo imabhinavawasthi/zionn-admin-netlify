@@ -55,18 +55,23 @@ const Inventory = () => {
               <div className="col-3"></div>
             </div>
             <div className="row g-4">
-              <div className="col-3">
+              <div className="col-2">
                 <div className="cell-wide cell purple-b">
                   <strong>company</strong>
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-2">
                 <div className="cell-mid cell purple-b">
                   <strong># of securities</strong>
                 </div>
               </div>
-              <div className="col-3">
+              <div className="col-2">
                 <div className="cell-mid cell purple-b">
+                  <strong>type</strong>
+                </div>
+              </div>
+              <div className="col-2">
+                <div className="cell-wide cell purple-b">
                   <strong>#of unique users</strong>
                 </div>
               </div>
@@ -77,7 +82,8 @@ const Inventory = () => {
                   <InventoryRow
                     a={detail?.c_name}
                     b={detail?.no_of_shares}
-                    c={detail?.count}
+                    c={detail?.secu_type}
+                    d={detail?.count}
                   />
                 </div>
               )
