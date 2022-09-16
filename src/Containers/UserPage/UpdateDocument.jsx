@@ -12,11 +12,20 @@ const UpdateDocument = () => {
             navigate("/signin");
         }, 500)
     }
+    const [isActive, setIsActive] = useState(false);
+    const handleClick = (event) => {
+        setIsActive((current) => !current);
+    };
+    const defaultClick = (e) => {
+        setIsActive(false);
+    };
     const params = useParams();
     const navigate = useNavigate();
     const [uploaded, setUploaded] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [loading2, setLoading2] = useState(false);
     const [doc, setDoc] = useState(null);
+    const [doe, setDoe] = useState(null);
     const handleFileInput = (e) => {
         // setUploaded(false);
         setDoc({
@@ -35,39 +44,81 @@ const UpdateDocument = () => {
         formData.append("uid", params.uid)
         let res = await api.updateDoc(formData)
         // console.log(res.data.message);
-        
+
         navigate(`/users/user/${params.uid}`);
         setLoading(false);
     };
+    const updateDoe = async (e) => {
+        e.preventDefault();
+        setLoading2(true);
+        let res = await api.updateDoe({doe: doe,c_name: params.cname,date:params.date,u_id:params.uid})
+
+        navigate(`/users/user/${params.uid}`);
+        setLoading2(false);
+    };
     return (
         <>
-            {curruser ? <>
-                <h3 className="mb-5 mt-3 head-user-page-css">
-                    update document for share: {params.cname} <p><NavLink to={`/users/user/${params.uid}`} style={{ textDecoration: 'none' }} ><h5 style={{ color: '#000' }}><i class="bi bi-x-circle-fill"></i> cancel</h5></NavLink></p>
-                </h3>
+            {curruser ?
                 <div className="container">
+                    <h1 className="mb-5 mt-3 head-user-page-css">
+                        update details for share: {params.cname} <p><NavLink to={`/users/user/${params.uid}`} style={{ textDecoration: 'none' }} ><h5 style={{ color: '#000' }}><i class="bi bi-x-circle-fill"></i> cancel</h5></NavLink></p>
+                    </h1>
+                    <hr />
                     <div className="row">
-                        <div className="col"></div>
-                        <div className="col-2">
-                            {loading?<Loading/>:<>{!uploaded ? <><label for="file-doc" style={{ cursor: "pointer" }} className="cell-mid cell">
-                            <input
-                                type="file"
-                                onChange={handleFileInput}
-                                id="file-doc"
-                                className="input-update-doc"
-                                name="file"
-                                accept="application/pdf,application/msword,
+                        <div>
+                            <h3 className="mb-5 mt-3 head-user-page-css">
+                                update document
+                            </h3>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col"></div>
+                                    <div className="col-2">
+                                        {loading ? <Loading /> : <>{!uploaded ? <><label for="file-doc" style={{ cursor: "pointer" }} className="cell-mid cell">
+                                            <input
+                                                type="file"
+                                                onChange={handleFileInput}
+                                                id="file-doc"
+                                                className="input-update-doc"
+                                                name="file"
+                                                accept="application/pdf,application/msword,
   application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                required
-                            />
-                            upload doc<i class="bi bi-pen"></i>
-                        </label></> : <button onClick={(e) => { updateDoc(e) }} className="cell-mid cell remove-btn-default">update doc<i class="bi bi-save"></i></button>
-                        }</>}
+                                                required
+                                            />
+                                            upload doc<i class="bi bi-pen"></i>
+                                        </label></> : <button onClick={(e) => { updateDoc(e) }} className="cell-mid cell remove-btn-default">update doc<i class="bi bi-save"></i></button>
+                                        }</>}
+                                    </div>
+                                    <div className="col"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="col"></div>
                     </div>
+                    <hr />
+                    <h3 className="mb-5 mt-3 head-user-page-css">
+                        update doe
+                    </h3>
+                    <div className="row mt-5 mb-3">
+
+                        <div className="col-4"></div>
+                        <div className="col-2">
+                            <input type="date" id="doe" className="" onChange={(e)=>{setDoe(e.target.value);}} required/>
+                        </div>
+                        <div className="col-2">
+                            {loading2?<Loading/>:<button
+                                onPointerLeave={defaultClick}
+                                onPointerDown={handleClick}
+                                onPointerUp={handleClick}
+                                onClick={updateDoe}
+                                className={isActive ? "butt butt-ac" : "butt"}
+                            >
+                                update doe
+                            </button>}
+                        </div>
+                        <div className="col-4"></div>
+                    </div>
+                    <hr/>
                 </div>
-            </> : <></>}
+                : <></>}
 
         </>
 

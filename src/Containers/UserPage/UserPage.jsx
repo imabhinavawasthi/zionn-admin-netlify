@@ -197,9 +197,9 @@ const UserPage = () => {
               <h5>
                 <NavLink style={{ textDecoration: 'none' }} target="_____blank" to={`/users/user/addinventory/${params.uid}/${userdetails[0]?.email}`}>add inventory<i class="bi bi-plus"></i></NavLink>
               </h5>
-              <div className="container-sm  main-con">
+              <div className="container-sm  main-con p-3">
                 <div className="row g-4">
-                  <div className="col-3">
+                  <div className="col-2">
                     <div className="cell-wide cell purple-b">
                       <strong>company</strong>
                     </div>
@@ -220,6 +220,11 @@ const UserPage = () => {
                     </div>
                   </div>
                   <div className="col-2">
+                    <div className="cell-mid cell purple-b">
+                      <strong>date of exercise</strong>
+                    </div>
+                  </div>
+                  <div className="col-2">
           <div className="row">
             <div className="col-8"><div className="cell-mid cell purple-b"><strong>ownership</strong></div></div>
             <div className="col-4"><div className="cell-mid cell purple-b "><strong><i class="pen-bi-c bi bi-pen"></i></strong></div></div>
@@ -237,6 +242,7 @@ const UserPage = () => {
                         d={detail?.secu_type}
                         e={detail?.date}
                         f={params.uid}
+                        g={detail?.doe}
                       />
 
                     </div>

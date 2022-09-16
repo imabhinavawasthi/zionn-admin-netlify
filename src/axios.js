@@ -2,8 +2,8 @@ import axios from 'axios'
 
 const API = axios.create({
 //     baseURL: 'https://zionn-stage.herokuapp.com/'
-      baseURL:'https://zionn-prod.herokuapp.com/'
-    // baseURL: 'http://localhost:8080/'
+    //   baseURL:'https://zionn-prod.herokuapp.com/'
+    baseURL: 'http://localhost:8080/'
 }) 
 
 API.interceptors.request.use((req) => {
@@ -63,5 +63,10 @@ export const addUserInv = async (sharedata) => {
 
 export const updateDoc = async (sharedata) => {
     let res = await API.post("/admin/updatedoc", sharedata)
+    return res;
+}
+
+export const updateDoe = async (sharedata) => {
+    let res = await API.post("/admin/updatedoe", sharedata)
     return res;
 }
