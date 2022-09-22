@@ -9,6 +9,7 @@ import { Sidebar, SidebarItem } from "../../../node_modules/react-responsive-sid
 import "./admin.css"
 import Tables from "../../Components/Table/Table";
 import InventoryTable from "../../Components/Table/InventoryTable";
+import TransactionTable from "../../Components/TransactionTable/TransactionTable";
 
 
 const Admin = () => {
@@ -107,6 +108,7 @@ const Admin = () => {
                             <div className="container mb-5">
                                 <Tables heading1="users" />
                                 <InventoryTable heading1="inventory" />
+                                <TransactionTable heading1="transaction"/>
                             </div>
                         </div>
                     </div>
