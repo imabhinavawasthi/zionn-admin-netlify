@@ -13,6 +13,7 @@ import UserPage from "./Containers/UserPage/UserPage";
 import AddUser from "./Containers/UserPage/AddUser";
 import AddInventory from "./Containers/UserPage/AddInventory";
 import UpdateDocument from "./Containers/UserPage/UpdateDocument";
+import Transaction from "./Containers/Transaction/TransactionPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/users" element={<Users />} />
           <Route exact path="/inventory" element={<Inventory />} />
           <Route exact path="/signin" element={<Signin />} />
+          <Route exact path="/transaction" element={<Transaction/>}/>
           <Route exact path="/users/user/:uid" element={<UserPage />} />
           <Route exact path="/users/addnewuser" element={<AddUser />} />
           <Route exact path="/users/user/addinventory/:uid/:email" element={<AddInventory />} />

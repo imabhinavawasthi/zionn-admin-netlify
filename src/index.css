@@ -21,3 +21,13 @@ code {
 	cursor: pointer;
 	outline: inherit;
 }
+
+.pp-chirka{
+  font-family: 'PP Cirka';
+font-style: normal;
+
+}
+
+input:focus{
+  outline: none;
+}
