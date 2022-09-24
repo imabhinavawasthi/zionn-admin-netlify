@@ -60,7 +60,7 @@ const Inventory = () => {
                   <strong>company</strong>
                 </div>
               </div>
-              <div className="col-2">
+              <div className="col-3">
                 <div className="cell-mid cell purple-b">
                   <strong># of securities</strong>
                 </div>
@@ -70,7 +70,7 @@ const Inventory = () => {
                   <strong>type</strong>
                 </div>
               </div>
-              <div className="col-2">
+              <div className="col-3">
                 <div className="cell-wide cell purple-b">
                   <strong>#of unique users</strong>
                 </div>
