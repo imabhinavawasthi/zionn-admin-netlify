@@ -47,7 +47,7 @@ const Transaction = (props) => {
                                 <form onSubmit={getIssuerDetails} >
                                     <div className="row g-5">
                                         <div className="col-3">
-                                            <input placeholder='issuer name' onChange={(e) => { getIssuerDetails(e) }} className="cell-wide cell " type="text" required />
+                                            <input placeholder='issuer name' onChange={(e) => { getIssuerDetails(e);  }} className="cell-wide cell " type="text" required />
                                         </div>
                                         <div className="col-3">
                                             <input placeholder='# of securities' className="cell-mid cell" type="number" />
@@ -97,10 +97,8 @@ const Transaction = (props) => {
                                                 </div>
                                             </div>
                                             <div className="col-3">
-                                                {/* <input defaultValue={5} className="cell-mid cell" type="text" /> */}
-                                                <div className="cell-mid cell">
-                                                    5
-                                                </div>
+                                                <input defaultValue={5} className="cell-mid cell" type="text" />
+                                               
                                             </div>
                                             <div className="col-3">
                                                 <div className='container'>
@@ -149,10 +147,8 @@ const Transaction = (props) => {
                                                 </div>
                                             </div>
                                             <div className="col-3">
-                                                {/* <input defaultValue={5} className="cell-mid cell" type="text" /> */}
-                                                <div className="cell-mid cell">
-                                                    5
-                                                </div>
+                                                <input defaultValue={5} className="cell-mid cell" type="text" />
+                                                
                                             </div>
                                             <div className="col-3">
                                                 <div className='container'>
