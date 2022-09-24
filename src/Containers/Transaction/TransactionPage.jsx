@@ -9,12 +9,17 @@ const Transaction = (props) => {
     const [issuerName, setIssuerName] = useState("");
     const [issuerDetails, setIssuerDetails] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [selectedSeller,setSelectedSeller]=useState();
+    const [selectedBuyer,setSelectedBuyer]=useState();
+    const [selectedSellerName,setSelectedSellerName]=useState();
+    const [selectedBuyerName,setSelectedBuyerName]=useState();
     const getIssuerDetails = async (e) => {
         setLoading(true);
         e.preventDefault();
         setIssuerName(e.target.value);
         let res = await api.getIssuerDetails({ c_name: e.target.value.trim() });
         setIssuerDetails(res.data.result);
+        console.log(res.data.result);
         setLoading(false);
     }
     return (
@@ -67,6 +72,21 @@ const Transaction = (props) => {
                     <div className='row mb-3 d-flex justify-content-center align-items-center' >
                         <h3 className='pp-chirka head-transac-css'>Finalize parties</h3>
                     </div>
+                    {(selectedBuyer||selectedSeller)?<>
+                        <div className='container'>
+                            <div className='row'>
+                                <div className='col-3'></div>
+                                <div className='col-3'>
+                                {selectedBuyer&&<p>selected buyer:<strong>{selectedBuyerName}</strong></p>}
+                                {selectedSeller&&<p>selected seller:<strong>{selectedSellerName}</strong></p>}
+                                </div>
+                                <div className='col'>
+                                    {(selectedBuyer&&selectedSeller)?<Button name="initiate transaction"/>:<></>}
+                                </div>
+                            </div>
+                        
+                    </div>
+                    </>:<></>}
                     <div className='row'>
                         <div className="container">
                             <div className="row">
@@ -88,7 +108,6 @@ const Transaction = (props) => {
                                             </div>
                                         </div>
                                     </div>
-                                    {/*  */}
                                     {issuerDetails.filter(detail => detail.trans_type.includes('sell')).map(detail => (
                                         <div className="row mb-3 g-5">
                                             <div className="col-3">
@@ -105,7 +124,11 @@ const Transaction = (props) => {
                                                     <div className='row'>
                                                         <div className='col-1'></div>
                                                         <div className='col-10'>
-                                                            <Button name="select seller" />
+                                                            <label className={selectedSeller==detail.date?"butt-input-label-sellbuy-css-selected ":'butt-input-label-sellbuy-css '} for={detail.date}>
+                                                            <input style={{display:"none"}} onChange={(e)=>{setSelectedSeller(e.target.value);setSelectedSellerName(detail.user_name)}} checked={selectedSeller == detail.date} type="radio" value={detail.date} id={detail.date} />
+                                                            
+                                                            {selectedSeller==detail.date?"selected":"select seller"}
+                                                            </label>
                                                         </div>
                                                         <div className='col-1'></div>
                                                     </div>
@@ -155,7 +178,11 @@ const Transaction = (props) => {
                                                     <div className='row'>
                                                         <div className='col-1'></div>
                                                         <div className='col-10'>
-                                                            <Button name="select seller" />
+                                                            <label className={selectedBuyer==detail.date?"butt-input-label-sellbuy-css-selected ":'butt-input-label-sellbuy-css '} for={detail.date}>
+                                                            <input style={{display:"none"}} onChange={(e)=>{setSelectedBuyer(e.target.value);setSelectedBuyerName(detail.user_name)}} checked={selectedBuyer == detail.date} type="radio" value={detail.date} id={detail.date} />
+                                                            
+                                                            {selectedBuyer==detail.date?"selected":"select buyer"}
+                                                            </label>
                                                         </div>
                                                         <div className='col-1'></div>
                                                     </div>
