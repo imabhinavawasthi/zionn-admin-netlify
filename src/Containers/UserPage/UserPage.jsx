@@ -227,7 +227,7 @@ const UserPage = () => {
                   <div className="col-2">
           <div className="row">
             <div className="col-8"><div className="cell-mid cell purple-b"><strong>ownership</strong></div></div>
-            <div className="col-4"><div className="cell-mid cell purple-b "><strong><i class="pen-bi-c bi bi-pen"></i></strong></div></div>
+            <div className="col-4"><div className="cell-mid cell purple-b "><strong></strong></div></div>
           </div>
         </div>
                 </div>
