@@ -59,7 +59,7 @@ const Admin = () => {
     ];
     return (
         <>
-            {user && (<div>
+            {user && (<div className="white-bg-css">
                 <Sidebar
                     className="side-bar z-s-i-css"
                     content={items}
@@ -108,7 +108,7 @@ const Admin = () => {
                             <div className="container mb-5">
                                 <Tables heading1="users" />
                                 <InventoryTable heading1="inventory" />
-                                <TransactionTable heading1="transaction"/>
+                                <TransactionTable heading1="transaction"/> 
                             </div>
                         </div>
                     </div>

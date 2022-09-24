@@ -70,3 +70,8 @@ export const updateDoe = async (sharedata) => {
     let res = await API.post("/admin/updatedoe", sharedata)
     return res;
 }
+
+export const getIssuerDetails = async (c_name)=>{
+    let res=await API.post("/admin/getIssuerInv",c_name)
+    return res
+}
