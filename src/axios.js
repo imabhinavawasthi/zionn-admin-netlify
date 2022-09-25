@@ -75,3 +75,8 @@ export const getIssuerDetails = async (c_name)=>{
     let res=await API.post("/admin/getIssuerInv",c_name)
     return res
 }
+
+export const initiateTransaction = async (transactionDetails)=>{
+    let res=await API.post("/admin/starttransaction",transactionDetails);
+    return res;
+}
