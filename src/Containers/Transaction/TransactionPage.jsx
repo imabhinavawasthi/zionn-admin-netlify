@@ -19,6 +19,9 @@ const Transaction = (props) => {
     const [buyerCom, setBuyerCom] = useState([]);
     const [sellerCom, setSellerCom] = useState([]);
     const [done, setDone] = useState(false);
+    const [errorNoOfSecu,setErrorNoOfSecu]=useState(false);
+    const [errorPPS,setErrorPPS]=useState(false);
+    const [errorNoOfSecuLimit,setErrorNoOfSecuLimit]=useState(false);
     const getIssuerDetails = async (e) => {
         setLoading(true);
         e.preventDefault();
@@ -30,19 +33,35 @@ const Transaction = (props) => {
     }
     const inititateTransactionFun = async (e) => {
         e.preventDefault();
+        
+        if(!noOfSecu||!pricePerShare){
+            if(!noOfSecu){
+                setErrorNoOfSecu(true);
+            }
+            if(!pricePerShare){
+                setErrorPPS(true);
+            }
+            return;
+        }
+        var minshares=Math.min(selectedBuyerDetails.shares,selectedSellerDetails.shares);
+        if(noOfSecu>minshares){
+            setErrorNoOfSecuLimit(true);
+            return;
+        }
         setLoadingTransaction(true);
         let res = await api.initiateTransaction({ c_name: issuerName, s_id: selectedSellerDetails.uid, b_id: selectedBuyerDetails.uid, seller_name: selectedSellerDetails.name, buyer_name: selectedBuyerDetails.name, trans_price: pricePerShare, no_of_secu: noOfSecu, seller_commission: 5, buyer_commission: 5, seller_inv_time: selectedSeller, buyer_inv_time: selectedBuyer })
         setLoadingTransaction(false);
         if (res.data.message == "Transaction initiated") {
             setDone(true);
-
-
             setTimeout(() => {
                 setSelectedBuyer();
                 setSelectedBuyerDetails([]);
                 setSelectedSeller();
                 setSelectedSellerDetails([]);
+                setNoOfSecu();
+                setPricePerShare();
                 setDone(false);
+                
             }, 5000);
         }
         else {
@@ -50,6 +69,8 @@ const Transaction = (props) => {
             setSelectedBuyerDetails([]);
             setSelectedSeller();
             setSelectedSellerDetails([]);
+            setNoOfSecu();
+            setPricePerShare();
             alert("something went wrong")
         }
     }
@@ -86,10 +107,13 @@ const Transaction = (props) => {
                                             <input placeholder='issuer name' onChange={(e) => { getIssuerDetails(e); }} className="cell-wide cell " type="text" required />
                                         </div>
                                         <div className="col-3">
-                                            <input placeholder='# of securities' onChange={(e) => { setNoOfSecu(e.target.value) }} className="cell-mid cell" type="number" />
+                                            <input placeholder='# of securities' value={noOfSecu} onChange={(e) => { setNoOfSecu(e.target.value);setErrorNoOfSecu(false);setErrorNoOfSecuLimit(false); }} className="cell-mid cell" type="number" />
+                                            {errorNoOfSecu&&<p style={{color:"red"}} >*please enter # of securities</p>}
+                                            {errorNoOfSecuLimit&&<p style={{color:"red"}} >*securities can't be more than seller and buyer shares</p>}
                                         </div>
                                         <div className="col-3">
-                                            <input placeholder='price per share' onChange={(e) => { setPricePerShare(e.target.value) }} className="cell-mid cell" type="number" />
+                                            <input placeholder='price per share' value={pricePerShare} onChange={(e) => { setPricePerShare(e.target.value);setErrorPPS(false); }} className="cell-mid cell" type="number" />
+                                            {errorPPS&&<p style={{color:"red"}} >*please enter price</p>}
                                         </div>
                                     </div>
                                 </form>
@@ -163,7 +187,7 @@ const Transaction = (props) => {
                                                         <div className='col-1'></div>
                                                         <div className='col-10'>
                                                             <label className={selectedSeller == detail.date ? "butt-input-label-sellbuy-css-selected " : 'butt-input-label-sellbuy-css '} for={detail.date}>
-                                                                <input style={{ display: "none" }} onChange={(e) => { setSelectedSeller(e.target.value); setSelectedSellerDetails({ name: detail.user_name, uid: detail.u_id }) }} checked={selectedSeller == detail.date} type="radio" value={detail.date} id={detail.date} />
+                                                                <input style={{ display: "none" }} onChange={(e) => { setSelectedSeller(e.target.value); setSelectedSellerDetails({ name: detail.user_name, uid: detail.u_id, shares: detail.no_of_shares }) }} checked={selectedSeller == detail.date} type="radio" value={detail.date} id={detail.date} />
 
                                                                 {selectedSeller == detail.date ? "selected" : "select seller"}
                                                             </label>
@@ -217,7 +241,7 @@ const Transaction = (props) => {
                                                         <div className='col-1'></div>
                                                         <div className='col-10'>
                                                             <label className={selectedBuyer == detail.date ? "butt-input-label-sellbuy-css-selected " : 'butt-input-label-sellbuy-css '} for={detail.date}>
-                                                                <input style={{ display: "none" }} onChange={(e) => { setSelectedBuyer(e.target.value); setSelectedBuyerDetails({ name: detail.user_name, uid: detail.u_id }) }} checked={selectedBuyer == detail.date} type="radio" value={detail.date} id={detail.date} />
+                                                                <input style={{ display: "none" }} onChange={(e) => { setSelectedBuyer(e.target.value); setSelectedBuyerDetails({ name: detail.user_name, uid: detail.u_id, shares: detail.no_of_shares }) }} checked={selectedBuyer == detail.date} type="radio" value={detail.date} id={detail.date} />
 
                                                                 {selectedBuyer == detail.date ? "selected" : "select buyer"}
                                                             </label>
