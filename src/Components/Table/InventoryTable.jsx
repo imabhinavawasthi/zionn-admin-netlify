@@ -49,7 +49,7 @@ const Tables = (props) => {
                         </div>
                         <div className="col-2">
                           <div className="cell-mid cell purple-b">
-                            <strong>type</strong>
+                            <strong>order type</strong>
                           </div>
                         </div>
                         <div className="col-3">
@@ -61,20 +61,20 @@ const Tables = (props) => {
                       <InventoryRow
                         a={inventorydetails[0]?.c_name}
                         b={inventorydetails[0]?.no_of_shares}
-                        c={inventorydetails[0]?.secu_type}
+                        c={inventorydetails[0]?.trans_type}
                         d={inventorydetails[0]?.count}
                       />
                       <InventoryRow
                         a={inventorydetails[1]?.c_name}
                         b={inventorydetails[1]?.no_of_shares}
-                        c={inventorydetails[1]?.secu_type}
-                        d={inventorydetails[0]?.count}
+                        c={inventorydetails[1]?.trans_type}
+                        d={inventorydetails[1]?.count}
                       />
                       <InventoryRow
                         a={inventorydetails[2]?.c_name}
                         b={inventorydetails[2]?.no_of_shares}
-                        c={inventorydetails[2]?.secu_type}
-                        d={inventorydetails[0]?.count}
+                        c={inventorydetails[2]?.trans_type}
+                        d={inventorydetails[2]?.count}
                       />
                     </div>
                   </div>

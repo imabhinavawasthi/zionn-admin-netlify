@@ -67,7 +67,7 @@ const Inventory = () => {
               </div>
               <div className="col-2">
                 <div className="cell-mid cell purple-b">
-                  <strong>type</strong>
+                  <strong>order type</strong>
                 </div>
               </div>
               <div className="col-3">
@@ -82,7 +82,7 @@ const Inventory = () => {
                   <InventoryRow
                     a={detail?.c_name}
                     b={detail?.no_of_shares}
-                    c={detail?.secu_type}
+                    c={detail?.trans_type}
                     d={detail?.count}
                   />
                 </div>

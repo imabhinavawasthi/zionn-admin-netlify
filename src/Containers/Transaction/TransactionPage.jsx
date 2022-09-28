@@ -28,7 +28,7 @@ const Transaction = (props) => {
         setIssuerName(e.target.value);
         let res = await api.getIssuerDetails({ c_name: e.target.value.trim() });
         setIssuerDetails(res.data.result);
-        console.log(res.data.result);
+        // console.log(res.data.result);
         setLoading(false);
     }
     const inititateTransactionFun = async (e) => {
@@ -154,14 +154,24 @@ const Transaction = (props) => {
                             <div className="row">
                                 <div className="container-sm  main-con">
                                     <div className="row mb-3 g-5">
-                                        <div className="col-3">
+                                        <div className="col-2">
                                             <div className="cell-wide cell purple-b">
                                                 <strong>seller</strong>
                                             </div>
                                         </div>
-                                        <div className="col-3">
+                                        <div className="col-2">
                                             <div className="cell-mid cell purple-b">
                                                 <strong>commission %</strong>
+                                            </div>
+                                        </div>
+                                        <div className="col-2">
+                                            <div className="cell-mid cell purple-b">
+                                                <strong># of shares</strong>
+                                            </div>
+                                        </div>
+                                        <div className="col-2">
+                                            <div className="cell-mid cell purple-b">
+                                                <strong>ask price</strong>
                                             </div>
                                         </div>
                                         <div className="col-3">
@@ -172,14 +182,24 @@ const Transaction = (props) => {
                                     </div>
                                     {issuerDetails.filter(detail => detail.trans_type.includes('sell')).map(detail => (
                                         <div className="row mb-3 g-5">
-                                            <div className="col-3">
+                                            <div className="col-2">
                                                 <div className="cell-mid cell">
                                                     {detail.user_name}
                                                 </div>
                                             </div>
-                                            <div className="col-3">
+                                            <div className="col-2">
                                                 <input defaultValue={5} className="cell-mid cell" type="text" />
 
+                                            </div>
+                                            <div className="col-2">
+                                                <div className="cell-mid cell">
+                                                    {detail.no_of_shares}
+                                                </div>
+                                            </div>
+                                            <div className="col-2">
+                                                <div className="cell-mid cell">
+                                                    {detail.sell_price}
+                                                </div>
                                             </div>
                                             <div className="col-3">
                                                 <div className='container'>
@@ -208,14 +228,24 @@ const Transaction = (props) => {
                             <div className="row">
                                 <div className="container-sm  main-con">
                                     <div className="row mb-3 g-5">
-                                        <div className="col-3">
+                                        <div className="col-2">
                                             <div className="cell-wide cell purple-b">
                                                 <strong>buyer</strong>
                                             </div>
                                         </div>
-                                        <div className="col-3">
+                                        <div className="col-2">
                                             <div className="cell-mid cell purple-b">
                                                 <strong>commission %</strong>
+                                            </div>
+                                        </div>
+                                        <div className="col-2">
+                                            <div className="cell-mid cell purple-b">
+                                                <strong># of shares</strong>
+                                            </div>
+                                        </div>
+                                        <div className="col-2">
+                                            <div className="cell-mid cell purple-b">
+                                                <strong>bid price</strong>
                                             </div>
                                         </div>
                                         <div className="col-3">
@@ -226,14 +256,23 @@ const Transaction = (props) => {
                                     </div>
                                     {issuerDetails.filter(detail => detail.trans_type.includes('buy')).map(detail => (
                                         <div className="row mb-3 g-5">
-                                            <div className="col-3">
+                                            <div className="col-2">
                                                 <div className="cell-mid cell">
                                                     {detail.user_name}
                                                 </div>
                                             </div>
-                                            <div className="col-3">
+                                            <div className="col-2">
                                                 <input defaultValue={5} className="cell-mid cell" type="text" />
 
+                                            </div>
+                                            <div className="col-2">
+                                                <div className="cell-mid cell">
+                                                    {detail.no_of_shares}
+                                                </div>
+                                            </div><div className="col-2">
+                                                <div className="cell-mid cell">
+                                                    {detail.buy_price}
+                                                </div>
                                             </div>
                                             <div className="col-3">
                                                 <div className='container'>
