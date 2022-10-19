@@ -44,7 +44,7 @@ const UserPage = () => {
       setNewtenure(res.data.result[0].tenure)
       setNewemail(res.data.result[0].email)
       setNewuid(params.uid)
-      // console.log(res.data.result);
+      console.log(res.data.result);
     }
 
     f()
@@ -199,14 +199,23 @@ const UserPage = () => {
               </h5>
               <div className="container-sm  main-con p-3">
                 <div className="row g-4">
-                  <div className="col-2">
-                    <div className="cell-wide cell purple-b">
-                      <strong>company</strong>
-                    </div>
-                  </div>
-                  <div className="col-2">
-                    <div className="cell-mid cell purple-b">
-                      <strong>inventory</strong>
+                  <div className="col-4">
+                    <div className="row">
+                      <div className="col-5">
+                        <div className="cell-wide cell purple-b">
+                          <strong>company</strong>
+                        </div>
+                      </div>
+                      <div className="col-4">
+                        <div className="cell-mid cell purple-b">
+                          <strong>inventory</strong>
+                        </div>
+                      </div>
+                      <div className="col-3">
+                        <div className="cell-mid cell purple-b">
+                          <strong>price</strong>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="col-1">
@@ -225,24 +234,26 @@ const UserPage = () => {
                     </div>
                   </div>
                   <div className="col-2">
-          <div className="row">
-            <div className="col-8"><div className="cell-mid cell purple-b"><strong>ownership</strong></div></div>
-            <div className="col-4"><div className="cell-mid cell purple-b "><strong></strong></div></div>
-          </div>
-        </div>
+                    <div className="row">
+                      <div className="col-8"><div className="cell-mid cell purple-b"><strong>ownership</strong></div></div>
+                      <div className="col-4"><div className="cell-mid cell purple-b "><strong></strong></div></div>
+                    </div>
+                  </div>
                 </div>
                 {userdetails.map((detail) => {
                   return (
                     <div>
-                      <RowUserPage 
+                      <RowUserPage
                         key={detail?.date}
                         a={detail?.c_name}
                         b={detail?.no_of_shares}
                         c={detail?.doc_url}
-                        d={detail?.secu_type}
+                        d={detail?.trans_type}
                         e={detail?.date}
                         f={params.uid}
                         g={detail?.doe}
+                        buy={detail?.buy_price}
+                        sell={detail?.sell_price}
                       />
 
                     </div>
