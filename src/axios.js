@@ -80,3 +80,8 @@ export const initiateTransaction = async (transactionDetails)=>{
     let res=await API.post("/admin/starttransaction",transactionDetails);
     return res;
 }
+
+export const updatePrice = async (sharedata) => {
+    let res = await API.post("/admin/updatebidaskprice", sharedata)
+    return res;
+}

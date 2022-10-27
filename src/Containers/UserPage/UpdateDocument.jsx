@@ -24,8 +24,10 @@ const UpdateDocument = () => {
     const [uploaded, setUploaded] = useState(false);
     const [loading, setLoading] = useState(false);
     const [loading2, setLoading2] = useState(false);
+    const [loading3, setLoading3] = useState(false);
     const [doc, setDoc] = useState(null);
     const [doe, setDoe] = useState(null);
+    const [price,setPrice]=useState();
     const handleFileInput = (e) => {
         // setUploaded(false);
         setDoc({
@@ -50,12 +52,28 @@ const UpdateDocument = () => {
     };
     const updateDoe = async (e) => {
         e.preventDefault();
+        if(!doe){
+            alert("enter date of exercise")
+            return;
+        }
         setLoading2(true);
         let res = await api.updateDoe({doe: doe,c_name: params.cname,date:params.date,u_id:params.uid})
 
         navigate(`/users/user/${params.uid}`);
         setLoading2(false);
     };
+    const updatePrice=async(e)=>{
+        e.preventDefault()
+        if(!price){
+            alert("enter price");
+            return;
+        }
+        setLoading3(true);
+        let res = await api.updatePrice({new_price: price,date:params.date,u_id:params.uid,type:params.type})
+
+        navigate(`/users/user/${params.uid}`);
+        setLoading3(false);
+    }
     return (
         <>
             {curruser ?
@@ -95,6 +113,26 @@ const UpdateDocument = () => {
                     </div>
                     <hr />
                     <h3 className="mb-5 mt-3 head-user-page-css">
+                        update price
+                    </h3>
+                    <div className="row mt-5 mb-3">
+
+                        <div className="col-4"></div>
+                        <div className="col-2">
+                            <input type="number" id="price" className="" onChange={(e)=>{setPrice(e.target.value);}} required/>
+                        </div>
+                        <div className="col-2">
+                            {loading3?<Loading/>:<button
+                                onClick={updatePrice}
+                                className={isActive ? "butt butt-ac" : "butt"}
+                            >
+                                update price
+                            </button>}
+                        </div>
+                        <div className="col-4"></div>
+                    </div>
+                    <hr/>
+                    <h3 className="mb-5 mt-3 head-user-page-css">
                         update doe
                     </h3>
                     <div className="row mt-5 mb-3">
@@ -116,7 +154,6 @@ const UpdateDocument = () => {
                         </div>
                         <div className="col-4"></div>
                     </div>
-                    <hr/>
                 </div>
                 : <></>}
 
