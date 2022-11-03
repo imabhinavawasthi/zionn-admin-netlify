@@ -6,13 +6,11 @@ import { useNavigate } from "react-router";
 import monkey from "../../assets/monkey.svg"
 import logo from "../../assets/logo.svg"
 import { Sidebar, SidebarItem } from "react-responsive-sidebar"
-import "./admin.css"
-import Tables from "../../Components/Table/Table";
-import InventoryTable from "../../Components/Table/InventoryTable";
-import TransactionTable from "../../Components/TransactionTable/TransactionTable";
+import "./LandingPage.css"
+import { items } from "../../ZComponents/items.js";
 
 
-const Admin = () => {
+const LandingPage = () => {
     const navigate = useNavigate();
     const user = localStorage.getItem("user");
     const userobj = JSON.parse(localStorage.getItem('user'));
@@ -37,26 +35,7 @@ const Admin = () => {
         e.preventDefault();
         setIsActive(false);
     };
-    const items = [
-        <SidebarItem>
-            <div className="">
-                <div>
-                    <NavLink to="/" style={{ textDecoration: 'none' }}><img className="logo-size" src={logo} /></NavLink>
-
-                </div>
-            </div>
-        </SidebarItem>,
-        <SidebarItem>
-            <div className="sidebar-btn mar-top">
-                <NavLink to="/users" style={{ textDecoration: 'none' }}><Button widthv={120} name="users" /></NavLink>
-            </div>
-        </SidebarItem>,
-        <SidebarItem>
-            <div className="sidebar-btn mar-mid-top mt-3">
-                <NavLink to="/inventory" style={{ textDecoration: 'none' }}><Button widthv={120} name="inventory" /></NavLink>
-            </div>
-        </SidebarItem>,
-    ];
+    
     return (
         <>
             {user && (<div className="white-bg-css">
@@ -74,11 +53,7 @@ const Admin = () => {
                     <div className="fix-nav ">
                         <div className="container">
                             <div className="row">
-                                <div className="col-1"></div>
-                                <div className="col-6 til-mob-css">
-                                    <TitleButton name="search customer" />
-                                </div>
-                                <div className="col-2"></div>
+                                <div className="col-9"></div>
                                 <div className="col-2 logo-top">
                                     <div className={openlogout ? "dropdown-monkey monkey-click" : "dropdown-monkey"}>
                                         <button className="monkey-btn-css" onClick={() => { setOpenlogout(current => !current) }}><img className="logo-top-size " src={monkey} /></button>
@@ -106,9 +81,6 @@ const Admin = () => {
                     <div onClick={() => setOpenlogout(false)} className="container con-abs">
                         <div className="row ">
                             <div className="container mb-5">
-                                <Tables heading1="users" />
-                                <InventoryTable heading1="inventory" />
-                                <TransactionTable heading1="transaction"/> 
                             </div>
                         </div>
                     </div>
@@ -119,4 +91,4 @@ const Admin = () => {
     );
 };
 
-export default Admin;
+export default LandingPage;

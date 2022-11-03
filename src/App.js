@@ -6,29 +6,14 @@ import {
   Route,
   Navigate, 
 } from "react-router-dom";
-import Users from "./Containers/Users/Users";
-import Inventory from "./Containers/Inventory/Inventory"
-import Signin from "./Components/auth/Signin";
-import UserPage from "./Containers/UserPage/UserPage";
-import AddUser from "./Containers/UserPage/AddUser";
-import AddInventory from "./Containers/UserPage/AddInventory";
-import UpdateDocument from "./Containers/UserPage/UpdateDocument";
-import Transaction from "./Containers/Transaction/TransactionPage";
+import LandingPage from "./ZContainers/LandingPage/LandingPage.jsx";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Admin />} />
-          <Route exact path="/users" element={<Users />} />
-          <Route exact path="/inventory" element={<Inventory />} />
-          <Route exact path="/signin" element={<Signin />} />
-          <Route exact path="/transaction" element={<Transaction/>}/>
-          <Route exact path="/users/user/:uid" element={<UserPage />} />
-          <Route exact path="/users/addnewuser" element={<AddUser />} />
-          <Route exact path="/users/user/addinventory/:uid/:email" element={<AddInventory />} />
-          <Route exact path="/users/user/updatedoc/:uid/:date/:cname/:type" element={<UpdateDocument/>} />
+          <Route exact path="/" element={<LandingPage />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>

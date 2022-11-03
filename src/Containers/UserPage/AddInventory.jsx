@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import Loading from '../../Components/Loading/Loading';
-import locksellbuy from "../../../src/assets/locksellbuy.svg"
+import locksellbuy from "../../assets/locksellbuy.svg"
 import { useNavigate } from "react-router";
 import * as api from "../../axios"
 
